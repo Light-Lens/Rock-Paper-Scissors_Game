@@ -19,10 +19,7 @@ Clock = pygame.time.Clock()
 
 Userwin = 0
 Opponent = [-1, 0]
-def Shuffle(Userchoice):
-	Compute_Choices = [random.randint(1, 3) for i in range(7)]
-	Shuffle_Choices = [Compute_Choices[random.randint(0, len(Compute_Choices)-1)], Userchoice]
-	return Shuffle_Choices
+def Shuffle(Userchoice): return [random.randint(1, 3), Userchoice]
 
 # Setup up window
 Display = pygame.display.set_mode((1000, 675))
