@@ -24,6 +24,7 @@ class GUI:
 			self.NewColor = NewColor
 			self.Pressed = Pressed
 			self.Display = Display
+			self.IsClicked = False
 
 		def draw(self):
 			self.Hover_On_Rect = pygame.Rect(self.Pos[0], self.Pos[1], self.Size[0], self.Size[1])
@@ -33,12 +34,14 @@ class GUI:
 			pygame.draw.rect(self.Display, self.Colors, self.Hover_On_Rect)
 			if self.Hover_On:
 				pygame.draw.rect(self.Display, self.NewColor, self.Hover_On_Rect)
-				if pygame.mouse.get_pressed()[0]:
+				if pygame.mouse.get_pressed()[0] == 1 and self.IsClicked == False:
 					pygame.draw.rect(self.Display, self.Pressed, self.Hover_On_Rect)
-					pygame.time.delay(100)
+					self.IsClicked = True
 					return 1
 
-				else: return 0
+				if pygame.mouse.get_pressed()[0] == 0:
+					self.IsClicked = False
+
 			else: pygame.draw.rect(self.Display, self.Colors, self.Hover_On_Rect)
 
 	class Text:
